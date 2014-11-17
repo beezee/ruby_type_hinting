@@ -59,6 +59,7 @@ class TypeHinted
   # raise if passed anything other than Fixnum for arg2
   # nil is allowed for arg2 since there is a default value specified
 end
+```
 
 ## Contributing
 
