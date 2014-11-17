@@ -1,6 +1,18 @@
 # TypeHinting
 
-TODO: Write a gem description
+I sometimes find myself writing code like this:
+
+```ruby
+  def do_something_with_argument(argument)
+    unless argument.kind_of?(SomeClassImExpecting)
+      raise Exception, 'Whatever'
+    end
+    do_more_stuff
+  end
+```
+
+This gem provides a mixin which add two class methods, return\_type and  
+param\_types, that are a bit nicer to work with.
 
 ## Installation
 
@@ -20,7 +32,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Dead simple, here's the example used in the tests:
+
+```ruby
+
+class TypeHinted
+  include TypeHinting
+
+  def return_should_work
+    []
+  end
+  return_type(:return_should_work, Array)
+  # raise if method returns anything other than array
+
+  def return_should_raise
+    nil
+  end
+  return_type(:return_should_raise, Array)
+  # same as above
+
+  def hinted_params(a, b = 4)
+    [a, b]
+  end
+  param_types(:hinted_params, Array, Fixnum) 
+  # raise if passed anything other than Array for arg1,
+  # raise if passed anything other than Fixnum for arg2
+  # nil is allowed for arg2 since there is a default param
+end
 
 ## Contributing
 
