@@ -57,7 +57,7 @@ class TypeHinted
   param_types(:hinted_params, Array, Fixnum) 
   # raise if passed anything other than Array for arg1,
   # raise if passed anything other than Fixnum for arg2
-  # nil is allowed for arg2 since there is a default param
+  # nil is allowed for arg2 since there is a default value specified
 end
 
 ## Contributing
