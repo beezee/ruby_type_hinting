@@ -17,7 +17,7 @@ module TypeHinting
       define_method(name) do |*args|
         r = method.bind(self).call(*args)
         unless r.kind_of?(type)
-          raise Exception, "Invalid return type of #{r.class}, expecting #{type}"
+          raise TypeError, "Invalid return type of #{r.class}, expecting #{type}"
         end
         r
       end
@@ -29,7 +29,7 @@ module TypeHinting
       define_method(name) do |*args|
         arg_types.zip(sig_args, args).each do |(type, (required, name), arg)|
           if !arg.kind_of?(type) && !skipped_optional_param(required, arg)
-            raise Exception, "Invalid type #{arg.class} for " <<
+            raise TypeError, "Invalid type #{arg.class} for " <<
               "parameter #{name}, expecting #{type}"
           end
         end
