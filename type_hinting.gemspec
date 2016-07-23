@@ -6,7 +6,7 @@ require 'type_hinting/version'
 Gem::Specification.new do |spec|
   spec.name          = "type_hinting"
   spec.version       = TypeHinting::VERSION
-  spec.authors       = ["Brian Zeligson"]
+  spec.authors       = ["Brian Zeligson", "Tyler Dooling"]
   spec.email         = ["bzeligson@localytics.com"]
   spec.summary       = %q{Get type safety in your Ruby code}
   spec.homepage      = ""

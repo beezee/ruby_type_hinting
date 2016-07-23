@@ -25,7 +25,7 @@ describe TypeHinting do
   describe '.return_type' do
 
     it 'raises when method returns other than specified return type' do
-      expect{h.return_should_raise}.to raise_error
+      expect{h.return_should_raise}.to raise_error(TypeError)
     end
 
     it 'doesnt raise when method returns the specified return type' do
@@ -36,9 +36,9 @@ describe TypeHinting do
   describe '.param_types' do
     
     it 'raises on param passed of incorrect type' do
-      expect{h.hinted_params('b', 'd')}.to raise_error
-      expect{h.hinted_params('b', 3)}.to raise_error
-      expect{h.hinted_params(['b'], :d)}.to raise_error
+      expect{h.hinted_params('b', 'd')}.to raise_error(TypeError)
+      expect{h.hinted_params('b', 3)}.to raise_error(TypeError)
+      expect{h.hinted_params(['b'], :d)}.to raise_error(TypeError)
     end
 
     it 'does not raise when all passed params are correct type' do
